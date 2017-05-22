@@ -120,17 +120,21 @@ extension UNNotificationAttachment {
         let tmpSubFolderURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(tmpSubFolderName,
                                                                                                   isDirectory: true)
         do {
+            // Creating a temp folder for the image
             try fileManager.createDirectory(at: tmpSubFolderURL,
                                             withIntermediateDirectories: true,
                                             attributes: nil)
-            var imageFileIdentifier: String?
             
+             // Creating an identifier if you did not supply one
+            var imageFileIdentifier: String?
+           
             if let identifier = identifier {
                 imageFileIdentifier = identifier + ".png"
             } else {
                 imageFileIdentifier = UUID().uuidString + ".png"
             }
             
+            // Saving the image file to the temp folder
             let fileURL = tmpSubFolderURL.appendingPathComponent(imageFileIdentifier!)
             
             guard let imageData = UIImagePNGRepresentation(image) else {
@@ -138,6 +142,8 @@ extension UNNotificationAttachment {
             }
             
             try imageData.write(to: fileURL)
+            
+            // Creating the actual attachment
             let imageAttachment = try UNNotificationAttachment.init(identifier: imageFileIdentifier!,
                                                                     url: fileURL,
                                                                     options: options)
