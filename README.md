@@ -1,5 +1,6 @@
 # NotificationServiceDemo
 This is a demo showing how to use Notification Service Extensions introduced with iOS 10.
+I prepared this for a Cocoa Heads talk in Aachen. Here is my [presentation](http://hci.rwth-aachen.de/tiki-download_wiki_attachment.php?attId=2580&download=y) for this.
 
 # How to use?
 In order to use this you should download [Knuff](https://github.com/KnuffApp/Knuff) for debugging push.
